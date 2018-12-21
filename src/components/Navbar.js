@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import github from '../img/github-icon.svg';
-import logo from '../img/logo.svg';
+import { Navbar as NB } from './styles/navbar';
+import { Container } from './styles/general';
 
-const Navbar = class extends React.Component {
+class Navbar extends React.Component {
   componentDidMount() {
     // Get all "navbar-burger" elements
     const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -26,19 +26,9 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
-      <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div className="navbar-burger burger" data-target="navMenu">
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
+      <NB>
+        <Container>
+          <h3 className="navbar-brand">YETI Labs</h3>
           <div id="navMenu" className="navbar-menu">
             <div className="navbar-start has-text-centered">
               <Link className="navbar-item" to="/about">
@@ -54,23 +44,11 @@ const Navbar = class extends React.Component {
                 Form Examples
               </Link>
             </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
-            </div>
           </div>
-        </div>
-      </nav>
+        </Container>
+      </NB>
     );
   }
-};
+}
 
 export default Navbar;
