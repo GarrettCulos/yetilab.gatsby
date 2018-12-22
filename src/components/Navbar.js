@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+
 import { Navbar as NB } from './styles/navbar';
 import { Container } from './styles/general';
 
@@ -28,21 +28,13 @@ class Navbar extends React.Component {
     return (
       <NB>
         <Container>
-          <h3 className="navbar-brand">YETI Labs</h3>
+          <NB.Link to="/">YETI Labs</NB.Link>
           <div id="navMenu" className="navbar-menu">
             <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
+              <NB.Link to="/articles">Articles</NB.Link>
+              <NB.Link to="/products">Products</NB.Link>
+              <NB.Link to="/contact">Contact</NB.Link>
+              <NB.Link to="/about">About</NB.Link>
             </div>
           </div>
         </Container>
