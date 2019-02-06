@@ -1,7 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from '../components/layout';
+import { Link, Section, Container } from '../components/styles/general';
+
+const Content = styled.div`
+  border: 1px solid var(--yeti-color-gray);
+  padding: 2em 4em;
+`;
 
 export default class IndexPage extends React.Component {
   render() {
@@ -10,17 +17,12 @@ export default class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
+        <Section>
+          <Container>
             {posts.map(({ node: post }) => (
-              <div className="content" style={{ border: '1px solid #333', padding: '2em 4em' }} key={post.id}>
+              <Content className="content" key={post.id}>
                 <p>
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    {post.frontmatter.title}
-                  </Link>
+                  <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
                   <span> &bull; </span>
                   <small>{post.frontmatter.date}</small>
                 </p>
@@ -32,10 +34,10 @@ export default class IndexPage extends React.Component {
                     Keep Reading →
                   </Link>
                 </p>
-              </div>
+              </Content>
             ))}
-          </div>
-        </section>
+          </Container>
+        </Section>
       </Layout>
     );
   }
@@ -51,7 +53,10 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }, filter: { frontmatter: { templateKey: { eq: "blog-post" } } }) {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "article-page" } } }
+    ) {
       edges {
         node {
           excerpt(pruneLength: 400)

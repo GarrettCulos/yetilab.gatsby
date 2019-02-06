@@ -4,6 +4,8 @@ import { Link as YLink } from './general';
 
 const Nav = styled.nav`
   &.navbar {
+    position: sticky;
+    top: 0;
     background-color: #24292e;
     color: var(--yeti-color-white);
   }
@@ -12,7 +14,10 @@ const Nav = styled.nav`
 const Link = styled(YLink)`
   &.navbar-item {
     color: var(--yeti-color-white);
+    text-transform: uppercase;
+    font-size: 14px;
     &:hover {
+      color: var(--yeti-color-blue);
       background-color: var(--yeti-color-gray);
     }
   }
