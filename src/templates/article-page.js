@@ -5,14 +5,15 @@ import Helmet from 'react-helmet';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import Content, { HTMLContent } from '../components/content';
+import { Section, Container } from '../components/styles/general';
 
-export const BlogPostTemplate = ({ content, contentComponent, description, tags, title, helmet }) => {
+export const ArticleTemplate = ({ content, contentComponent, description, tags, title, helmet }) => {
   const PostContent = contentComponent || Content;
 
   return (
-    <section className="section">
+    <Section>
       {helmet || ''}
-      <div className="container content">
+      <Container className="content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
@@ -32,12 +33,12 @@ export const BlogPostTemplate = ({ content, contentComponent, description, tags,
             ) : null}
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 };
 
-BlogPostTemplate.propTypes = {
+ArticleTemplate.propTypes = {
   content: PropTypes.node.isRequired,
   contentComponent: PropTypes.func,
   description: PropTypes.string,
@@ -45,12 +46,12 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object
 };
 
-const BlogPost = ({ data }) => {
+const Article = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
     <Layout>
-      <BlogPostTemplate
+      <ArticleTemplate
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -67,16 +68,16 @@ const BlogPost = ({ data }) => {
   );
 };
 
-BlogPost.propTypes = {
+Article.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.object
   })
 };
 
-export default BlogPost;
+export default Article;
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query ArticleByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
