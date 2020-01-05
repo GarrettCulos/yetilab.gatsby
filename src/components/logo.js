@@ -20,7 +20,6 @@ const LOGO_B = [
   [14, 2],
   [14, 4],
   [14, 6],
-  [14, 6],
   [15, 2],
   [15, 3],
   [15, 4],
@@ -46,7 +45,7 @@ const LOGO_S = [
 
 const getXCord = cord => cord[0];
 const getYCord = cord => cord[1];
-const LETtER_UNIT = 1;
+const LETTER_UNIT = 1;
 const LOGO_YETI = [...LOGO_Y, ...LOGO_E, ...LOGO_T, ...LOGO_I];
 const LOGO_LABS = [...LOGO_L, ...LOGO_A, ...LOGO_B, ...LOGO_S];
 const YETI_CLASS = 'gIsu8S';
@@ -54,29 +53,29 @@ const YETI_CLASS = 'gIsu8S';
 const generateSVGPhrase = words => {
   const letters = words.reduce((acc, word) => [...acc, ...word.letters], []);
   const totalShifts = words.reduce((acc, word) => ({ x: acc.x + word.shiftX || 0, y: acc.y + word.shiftY || 0 }), { x: 0, y: 0 });
-  console.log(totalShifts);
-  const maxX = Math.max(...letters.map(getXCord)) + LETtER_UNIT + totalShifts.x;
-  const maxY = Math.max(...letters.map(getYCord)) + LETtER_UNIT + totalShifts.y;
+  const maxX = Math.max(...letters.map(getXCord)) + LETTER_UNIT + totalShifts.x;
+  const maxY = Math.max(...letters.map(getYCord)) + LETTER_UNIT + totalShifts.y;
   return (
-    <svg preserveAspectRatio="meet" viewBox={`0 0 ${maxX} ${maxY}`} className={YETI_CLASS} width="auto" height="100%">
+    <svg preserveAspectRatio="meet" viewBox={`0 0 ${maxX} ${maxY}`} className={YETI_CLASS} maxHeight="250px" width="100%" height="auto">
       {words.map(word => generateSVGWord(word.letters, word.className, word.includeBackground, word.shiftX, word.shiftY))}
     </svg>
   );
 };
 
 const generateSVGWord = (letterArray, wordClass, withBackground = false, shiftX = 0, shiftY = 0) => {
-  const maxX = Math.max(...letterArray.map(getXCord)) + LETtER_UNIT + shiftX;
-  const maxY = Math.max(...letterArray.map(getYCord)) + LETtER_UNIT + shiftY;
+  const maxX = Math.max(...letterArray.map(getXCord)) + LETTER_UNIT + shiftX;
+  const maxY = Math.max(...letterArray.map(getYCord)) + LETTER_UNIT + shiftY;
   return (
     <>
       {withBackground ? <polygon points={`0,0 0,${maxY} ${maxX},${maxY} ${maxX},0`} className={`${wordClass} bg`} /> : ''}
       {letterArray.map((letter, index) => {
-        const p1 = `${shiftX + letter[0] - LETtER_UNIT},${shiftY + letter[1] - LETtER_UNIT}`;
-        const p2 = `${shiftX + letter[0] - LETtER_UNIT},${shiftY + letter[1]}`;
+        const p1 = `${shiftX + letter[0] - LETTER_UNIT},${shiftY + letter[1] - LETTER_UNIT}`;
+        const p2 = `${shiftX + letter[0] - LETTER_UNIT},${shiftY + letter[1]}`;
         const p3 = `${shiftX + letter[0]},${shiftY + letter[1]}`;
-        const p4 = `${shiftX + letter[0]},${shiftY + letter[1] - LETtER_UNIT}`;
+        const p4 = `${shiftX + letter[0]},${shiftY + letter[1] - LETTER_UNIT}`;
         return (
           <polygon
+            key={index}
             points={`${p1} ${p2} ${p3} ${p4}`}
             className={`letter ${wordClass ? wordClass : ''} ${letter[0]}-${letter[1]}-${index}`}
           />
@@ -87,22 +86,23 @@ const generateSVGWord = (letterArray, wordClass, withBackground = false, shiftX 
 };
 
 const YetiLogoContainer = styled.div`
-  height: 35px;
+  height: 100%;
+  width: 100%;
   &:hover .${YETI_CLASS} {
     .labs.letter {
-      fill: var(--yeti-color-blue);
+      /* fill: var(--color-blue); */
     }
   }
 
   & .${YETI_CLASS} {
     .yeti.bg {
-      fill: var(--yeti-color-gold);
+      fill: var(--color-gold);
     }
     .letter {
-      fill: var(--yeti-color-gray);
+      fill: var(--color-gray);
     }
     .labs.letter {
-      fill: var(--yeti-color-white);
+      fill: var(--color-white);
     }
   }
 `;
@@ -112,12 +112,12 @@ const LogoContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 200px;
+  width: 100%;
 `;
 export const YetiLogo = ({ loading }) => {
   const phrase = [
     { letters: LOGO_YETI, className: 'yeti', includeBackground: true },
-    { letters: LOGO_LABS, className: 'labs', shiftX: Math.max(...LOGO_YETI.map(getXCord)) + LETtER_UNIT }
+    { letters: LOGO_LABS, className: 'labs', shiftX: Math.max(...LOGO_YETI.map(getXCord)) + LETTER_UNIT }
   ];
   return (
     <LogoContainer>

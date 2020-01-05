@@ -1,8 +1,20 @@
 html
-    --yeti-color-white: rgba(255,255,255,0.95)
-    --yeti-color-hover: #3273dc;
-    --yeti-color-gray: #24292e;
-    --yeti-color-gold: #d4a70d;
-    --yeti-color-blue: #5596ff;
+    overflow-y: auto !important;
+    --color-white: rgba(255,255,255,0.95);
+    --color-hover: #3273dc;
+    --color-gray: #24292e;
+    --color-gold: #d4a70d;
+    --color-blue: #5596ff;
+    --border-color: rgba(0,0,0,0.2);
+    --font-color: rgba(0,0,0,0.8);
+    --font-color--hover: rgba(0,0,0,0.6);
+    --default-transition: 0.125s all ease-in-out;
+.nav
+    display: flex;
+
+    &--center 
+        justify-content: center
+        align-items: center
+
 
 @import "bulma"
