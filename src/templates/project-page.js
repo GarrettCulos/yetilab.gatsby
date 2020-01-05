@@ -151,3 +151,18 @@ export const ProjectPreviewTemplate = ({ project, link, date, endDate, projectCo
     </PP>
   );
 };
+
+ProjectPreviewTemplate.propTypes = {
+  project: PropTypes.any,
+  link: PropTypes.any,
+  date: PropTypes.any,
+  endDate: PropTypes.any,
+  projectColor: PropTypes.any,
+  organization: PropTypes.any,
+  team: PropTypes.any,
+  description: PropTypes.any,
+  tags: PropTypes.any,
+  logoUrl: PropTypes.any
+};
+
+export default ProjectPreviewTemplate;
