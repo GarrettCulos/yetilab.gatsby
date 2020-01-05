@@ -9,9 +9,9 @@ export const Container = ({ children, ...args }) => (
 );
 
 export const Link = styled(GLink)`
-  color: var(--yeti-color-blue);
+  color: var(--color-blue);
   &:hover {
-    color: var(--yeti-color-blue);
+    color: var(--color-blue);
   }
 `;
 

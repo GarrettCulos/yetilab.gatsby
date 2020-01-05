@@ -3,35 +3,38 @@ import styled from 'styled-components';
 import { Link as YLink } from './general';
 
 const Nav = styled.nav`
-  &.navbar {
-    position: sticky;
-    top: 0;
-    background-color: #24292e;
-    color: var(--yeti-color-white);
-  }
+  background-color: #24292e;
+  color: var(--color-white);
+  min-height: 50vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 const Link = styled(YLink)`
-  &.navbar-item {
-    color: var(--yeti-color-white);
-    text-transform: uppercase;
-    font-size: 14px;
-    &:hover {
-      color: var(--yeti-color-blue);
-      background-color: var(--yeti-color-gray);
-    }
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-size: 14px;
+  &:hover {
+    background-color: transparent;
   }
 `;
+
+const Sticky = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: #24292e;
+  color: var(--color-white);
+`;
+
 const Navbar = ({ children }) => (
-  <Nav className="navbar" role="navigation" aria-label="main-navigation">
+  <Nav role="navigation" aria-label="main-navigation">
     {children}
   </Nav>
 );
-
-Navbar.Link = ({ children, ...args }) => (
-  <Link className="navbar-item" {...args}>
-    {children}
-  </Link>
-);
+Navbar.Sticky = ({ children, ...args }) => <Sticky {...args}>{children} </Sticky>;
+Navbar.Link = ({ children, ...args }) => <Link {...args}>{children}</Link>;
 
 export { Navbar };
