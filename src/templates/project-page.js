@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { kebabCase } from 'lodash';
 import { Link } from 'gatsby';
 import Content from '../components/content';
-import { Section, Container } from '../components/styles/general';
+import { MatIconLink, Section, Container } from '../components/styles/general';
 
 export const ProjectTemplate = ({ content, contentComponent, description, tags, project, helmet }) => {
   const projectContent = contentComponent || Content;
@@ -63,6 +63,9 @@ const PP = styled.div`
 PP.Title = styled.div`
   font-size: 1.2rem;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 PP.Dates = styled.div`
@@ -81,6 +84,7 @@ PP.Tags = styled.div`
   justify-content: center;
   font-size: 0.8rem;
   padding: 16px 0;
+  flex-flow: wrap;
 `;
 
 PP.LogoContainer = styled.div`
@@ -107,6 +111,17 @@ PP.Description = styled.p`
   margin-top: 16px;
 `;
 
+PP.ProjectLInk = styled.a`
+  margin-left: 4px;
+  margin-top: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color--hover);
+  &:hover {
+    color: var(--font-color);
+  }
+`;
 export const ProjectPreviewTemplate = ({ project, link, date, endDate, projectColor, organization, team, description, tags, logoUrl }) => {
   return (
     <PP>
@@ -126,20 +141,12 @@ export const ProjectPreviewTemplate = ({ project, link, date, endDate, projectCo
       <PP.Title>
         {project}
         {link && (
-          <a target="_blank" href={link}>
-            >
-          </a>
+          <PP.ProjectLInk target="_blank" href={link}>
+            <MatIconLink />
+          </PP.ProjectLInk>
         )}
       </PP.Title>
-      <PP.Dates>
-        <PP.Date>{date}</PP.Date>
-        {endDate && (
-          <>
-            {'  -  '}
-            <PP.Date>{endDate}</PP.Date>
-          </>
-        )}
-      </PP.Dates>
+      <PP.Date>{date}</PP.Date>
       {tags && (
         <PP.Tags>
           {tags.map(tag => (

@@ -5,10 +5,13 @@ import { Link as YLink } from './general';
 const Nav = styled.nav`
   background-color: #24292e;
   color: var(--color-white);
-  min-height: 50vh;
+  /* min-height: 50vh; */
   width: 100%;
   display: flex;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 `;
 
 const Link = styled(YLink)`
