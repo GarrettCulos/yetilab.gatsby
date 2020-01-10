@@ -15,4 +15,4 @@ tags:
   - Angular
 ---
 
-Jiragation: A better Frontend for time tracking and task usage. Consolidates user issues across multiple Jira accounts into a singular list.
+Jiragation was a research task to learn AngularJs and then Angular 2/3/4. The goal was to create an application that consolidates the developers time tracking process and issue workflow across multiple Jira accounts. The end product was a single list of tasks/issues that track the time spend active on each ticket.
