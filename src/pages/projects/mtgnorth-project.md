@@ -20,4 +20,4 @@ tags:
   - Docker
 ---
 
-MTG North deck building, MTG management application, community focused application with the goal of creating an environment that puts the user and their time/energy first. This application
+MTG North is a deck building, card management, community focused application with the goal of creating an environment that puts the user and their time/energy first. Users have the ability to creating decklists (validated in real time against the specified format), buylists, manage their card inventory. This application is PWA compatible working as a native desktop and mobile application.

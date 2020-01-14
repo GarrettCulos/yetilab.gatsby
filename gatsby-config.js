@@ -1,12 +1,37 @@
 module.exports = {
   siteMetadata: {
     title: 'Yetilabs',
-    description: 'The empty vessel of my mind... ',
+    description: 'The empty vessel for my mind.',
     url: 'www.yetilabs.ca',
     image: '/img/whale.jpg',
     themeColor: '#24292e'
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `YetiLabs`,
+        short_name: `YetiLabs`,
+        start_url: `/`,
+        background_color: `#fff`,
+        description: 'The empty vessel for my mind.',
+        theme_color: `#24292e`,
+        display: `standalone`,
+        icon: `static/img/favicon-52x52.png`, // This path is relative to the root of the site.
+        icons: [
+          {
+            src: `/static/img/yeti-logo-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`
+          },
+          {
+            src: `/static/img/yeti-logo-512x512.png`,
+            sizes: `512x512`,
+            type: `image/png`
+          }
+        ]
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -88,6 +113,14 @@ module.exports = {
       }
     },
     'gatsby-plugin-purgecss', // must be after other CSS plugins
-    'gatsby-plugin-netlify' // make sure to keep it last in the array
+    'gatsby-plugin-netlify', // make sure to keep it last in the array
+    `gatsby-plugin-offline`
+    // {
+    //   resolve: `gatsby-plugin-offline`,
+    //   options: {
+    //     precachePages: [],
+    //     appendScript: require.resolve(`./src/sw.js`)
+    //   }
+    // },
   ]
 };

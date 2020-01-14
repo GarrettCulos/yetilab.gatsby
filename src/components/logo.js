@@ -56,8 +56,8 @@ const generateSVGPhrase = words => {
   const maxX = Math.max(...letters.map(getXCord)) + LETTER_UNIT + totalShifts.x;
   const maxY = Math.max(...letters.map(getYCord)) + LETTER_UNIT + totalShifts.y;
   return (
-    <svg preserveAspectRatio="meet" viewBox={`0 0 ${maxX} ${maxY}`} className={YETI_CLASS} maxHeight="250px" width="100%" height="auto">
-      {words.map(word => generateSVGWord(word.letters, word.className, word.includeBackground, word.shiftX, word.shiftY))}
+    <svg preserveAspectRatio="none meet" viewBox={`0 0 ${maxX} ${maxY}`} className={YETI_CLASS} style={{maxHeight:'250px'}} width="100%" height="100%">
+      {words.map((word, index) => <g key={index}>{generateSVGWord(word.letters, word.className, word.includeBackground, word.shiftX, word.shiftY)}</g>)}
     </svg>
   );
 };
