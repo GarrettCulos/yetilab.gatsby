@@ -58,6 +58,12 @@ const PP = styled.div`
   &:hover {
     border: 1px solid var(--border-color);
   }
+
+  @media (max-width: 768px) {
+    padding: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
 `;
 
 PP.Title = styled.div`
@@ -150,7 +156,7 @@ export const ProjectPreviewTemplate = ({ project, link, date, endDate, projectCo
       {tags && (
         <PP.Tags>
           {tags.map(tag => (
-            <PP.Tag to={`/tags/${kebabCase(tag)}/`}>{tag} </PP.Tag>
+            <PP.Tag key={tag} to={`/tags/${kebabCase(tag)}/`}>{tag} </PP.Tag>
           ))}
         </PP.Tags>
       )}

@@ -15,7 +15,6 @@ export default class IndexPage extends React.Component {
         <Section>
           <Container>
             {projects.map(({ node: project }) => (
-              <>
                 <ProjectPreviewTemplate
                   key={project.id}
                   link={project.frontmatter.link}
@@ -27,24 +26,7 @@ export default class IndexPage extends React.Component {
                   organization={project.frontmatter.organization}
                   endDate={project.frontmatter.endDate}
                   projectColor={project.frontmatter.projectColor}
-                  logoUrl={project.frontmatter.icon}
-                />
-                {/* <Content className="content" key={project.id}>
-                  <p>
-                    <Link to={project.fields.slug}>{project.frontmatter.project}</Link>
-                    <span> &bull; </span>
-                    <small>{project.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {project.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={project.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </Content> */}
-              </>
+                  logoUrl={project.frontmatter.icon}/>
             ))}
           </Container>
         </Section>

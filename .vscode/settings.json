@@ -12,6 +12,7 @@
     "tslint.exclude": "**/node_modules/**/*",
     "cSpell.words": [
         "Jira",
-        "Jiragation"
+        "Jiragation",
+        "decklists"
     ],
 }
