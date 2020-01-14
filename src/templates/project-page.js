@@ -61,8 +61,9 @@ const PP = styled.div`
 
   @media (max-width: 768px) {
     padding: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: -16px;
+    margin-right: -16px;
+    width: calc(100% + 32px);
   }
 `;
 
