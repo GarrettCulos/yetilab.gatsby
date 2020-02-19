@@ -13,8 +13,6 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install
-      - run: npm run clean
-      - run: npm run test
       - run: npm run build
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory. This is a directory on the container which is
